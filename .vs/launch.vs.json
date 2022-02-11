@@ -1,0 +1,50 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "cppgdb",
+      "name": "Rt1060Startup.elf",
+      "project": "Debug\\Rt1060Startup.elf",
+      "projectTarget": "",
+      "targetArchitecture": "arm",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}\\Debug\\Rt1060Startup.elf",
+      "MIMode": "gdb",
+      "externalConsole": true,
+      "inheritEnvironments": [
+        "gcc_arm"
+      ],
+      "miDebuggerPath": "D:\\Program Files\\Microsoft Visual Studio\\2019\\Community\\Linux\\gcc_arm\\bin\\arm-none-eabi-gdb.exe",
+      "setupCommands": [
+        {
+          "text": "-environment-cd ${workspaceRoot}\\Debug"
+        },
+        {
+          "text": "-file-exec-and-symbols Rt1060Startup.elf"
+        },
+        {
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "text": "-break-insert main",
+          "ignoreFailures": false
+        }
+      ],
+      "showDisplayString": true,
+      "miDebuggerServerAddress": "localhost:2331",
+      "launchCompleteCommand": "None",
+      "debugServerPath": "D:\\Program Files\\SEGGER\\JLink\\JlinkGDBServer.exe",
+      "debugServerArgs": "-select USB -device MIMXRT1062xxx6A -endian little -if SWD -speed auto -noir -LocalhostOnly",
+      "filterStderr": true,
+      "filterStdout": true
+    },
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "Rt1060Startup.elf",
+      "name": "Rt1060Startup.elf"
+    }
+  ]
+}

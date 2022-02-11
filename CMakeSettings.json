@@ -1,0 +1,125 @@
+﻿{
+  "environments": [
+    {
+      "cCompilerDefines": "-DCPU_MIMXRT1062DVL6A -D__NEWLIB__ -DNX_INCLUDE_USER_DEFINE_FILE -DSCANF_ADVANCED_ENABLE=0 -DSCANF_FLOAT_ENABLE=1 -DSDK_DEBUGCONSOLE=1 -DSDK_DEBUGCONSOLE_UART -DTX_INCLUDE_USER_DEFINE_FILE -D__USE_CMSIS -DXIP_BOOT_HEADER_ENABLE=1 -D__MCUXPRESSO",
+      "cCompilerFlags": "-std=gnu99 -mthumb -mcpu=cortex-m7 -specs=nosys.specs -mfpu=fpv5-d16 -mfloat-abi=hard -fdata-sections -ffunction-sections -mlong-calls",
+      "cxxCompilerDefines": "-DCPU_MIMXRT1062DVL6A -D__NEWLIB__ -DNX_INCLUDE_USER_DEFINE_FILE -DSCANF_ADVANCED_ENABLE=0 -DSCANF_FLOAT_ENABLE=1 -DSDK_DEBUGCONSOLE=1 -DSDK_DEBUGCONSOLE_UART -DTX_INCLUDE_USER_DEFINE_FILE -D__USE_CMSIS -DXIP_BOOT_HEADER_ENABLE=1",
+      "cxxCompilerFlags": "-std=gnu99 -mcpu=cortex-m7 -mfloat-abi=hard -ffreestanding -ffunction-sections -fmerge-constants -fno-common -fstack-usage"
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Debug",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "buildRoot": "${projectDir}\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "gcc_arm" ],
+      "variables": [
+        {
+          "name": "CMAKE_C_COMPILER",
+          "value": "arm-none-eabi-gcc.exe",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_COMPILER",
+          "value": "arm-none-eabi-g++.exe",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_FLAGS",
+          "value": "${env.cxxCompilerFlags} ${env.cxxCompilerDefines}",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_STANDARD",
+          "value": "14",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_SYSTEM_NAME",
+          "value": "Generic",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_SYSTEM_PROCESSOR",
+          "value": "arm",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_C_FLAGS_DEBUG",
+          "value": "-Og -g -ggdb3",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_FLAGS_DEBUG",
+          "value": "-Og -g -ggdb3",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_EXE_LINKER_FLAGS",
+          "value": "-Wl,-T${projectDir}\\evkmimxrt1060_azure_iot_mqtt_Debug.ld -Wl,-Map=${projectDir}\\Rt1060Startup.map",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_C_FLAGS",
+          "value": "${env.cCompilerFlags} ${env.cCompilerDefines}",
+          "type": "STRING"
+        }
+      ],
+      "intelliSenseMode": "linux-gcc-arm"
+    },
+    {
+      "name": "Release",
+      "generator": "Ninja",
+      "configurationType": "Release",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "gcc-arm" ],
+      "variables": [
+        {
+          "name": "CMAKE_C_COMPILER",
+          "value": "arm-none-eabi-gcc.exe",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_COMPILER",
+          "value": "arm-none-eabi-g++.exe",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_C_FLAGS",
+          "value": "-nostartfiles",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_FLAGS",
+          "value": "-fno-rtti -fno-exceptions -specs=nosys.specs -mthumb -mcpu=cortex-m3",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_STANDARD",
+          "value": "14",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_SYSTEM_NAME",
+          "value": "Generic",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_SYSTEM_PROCESSOR",
+          "value": "arm",
+          "type": "STRING"
+        }
+      ],
+      "intelliSenseMode": "linux-gcc-arm"
+    }
+  ]
+}
