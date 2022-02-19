@@ -37,3 +37,7 @@
 # Debug binary output folder
 Debug/*
 Release/*
+
+#Ignore the CMakeCache
+.Debug/CMakeCache.txt
+.Release/CMakeCache.txt

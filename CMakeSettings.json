@@ -1,10 +1,10 @@
 ﻿{
   "environments": [
     {
-      "cCompilerDefines": "-DCPU_MIMXRT1062DVL6A -D__NEWLIB__ -DNX_INCLUDE_USER_DEFINE_FILE -DSCANF_ADVANCED_ENABLE=0 -DSCANF_FLOAT_ENABLE=1 -DSDK_DEBUGCONSOLE=1 -DSDK_DEBUGCONSOLE_UART -DTX_INCLUDE_USER_DEFINE_FILE -D__USE_CMSIS -DXIP_BOOT_HEADER_ENABLE=1 -D__MCUXPRESSO",
-      "cCompilerFlags": "-std=gnu99 -mthumb -mcpu=cortex-m7 -specs=nosys.specs -mfpu=fpv5-d16 -mfloat-abi=hard -fdata-sections -ffunction-sections -mlong-calls",
-      "cxxCompilerDefines": "-DCPU_MIMXRT1062DVL6A -D__NEWLIB__ -DNX_INCLUDE_USER_DEFINE_FILE -DSCANF_ADVANCED_ENABLE=0 -DSCANF_FLOAT_ENABLE=1 -DSDK_DEBUGCONSOLE=1 -DSDK_DEBUGCONSOLE_UART -DTX_INCLUDE_USER_DEFINE_FILE -D__USE_CMSIS -DXIP_BOOT_HEADER_ENABLE=1",
-      "cxxCompilerFlags": "-std=gnu99 -mcpu=cortex-m7 -mfloat-abi=hard -ffreestanding -ffunction-sections -fmerge-constants -fno-common -fstack-usage"
+      "cCompilerDefines": " -DCPU_MIMXRT1062DVL6A -D__NEWLIB__ -DNX_INCLUDE_USER_DEFINE_FILE -DSCANF_ADVANCED_ENABLE=0 -DSCANF_FLOAT_ENABLE=1 -DSDK_DEBUGCONSOLE=1 -DSDK_DEBUGCONSOLE_UART -DTX_INCLUDE_USER_DEFINE_FILE -D__USE_CMSIS -DXIP_BOOT_HEADER_ENABLE=1",
+      "cCompilerFlags": " -std=gnu99 -mcpu=cortex-m7 -mfloat-abi=soft -ffreestanding -ffunction-sections -fmerge-constants -fno-common -fstack-usage",
+      "cxxCompilerDefines": "",
+      "cxxCompilerFlags": ""
     }
   ],
   "configurations": [
@@ -21,12 +21,12 @@
       "variables": [
         {
           "name": "CMAKE_C_COMPILER",
-          "value": "arm-none-eabi-gcc.exe",
+          "value": "C:/nxp/MCUXpressoIDE_11.3.1_5262/ide/tools/bin/arm-none-eabi-gcc.exe",
           "type": "STRING"
         },
         {
           "name": "CMAKE_CXX_COMPILER",
-          "value": "arm-none-eabi-g++.exe",
+          "value": "C:/nxp/MCUXpressoIDE_11.3.1_5262/ide/tools/bin/arm-none-eabi-g++.exe",
           "type": "STRING"
         },
         {

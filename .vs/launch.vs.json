@@ -15,7 +15,7 @@
       "inheritEnvironments": [
         "gcc_arm"
       ],
-      "miDebuggerPath": "D:\\Program Files\\Microsoft Visual Studio\\2019\\Community\\Linux\\gcc_arm\\bin\\arm-none-eabi-gdb.exe",
+      "miDebuggerPath": "C:\\nxp\\MCUXpressoIDE_11.3.1_5262\\ide\\tools\\bin\\arm-none-eabi-gdb.exe",
       "setupCommands": [
         {
           "text": "-environment-cd ${workspaceRoot}\\Debug"
@@ -35,8 +35,8 @@
       "showDisplayString": true,
       "miDebuggerServerAddress": "localhost:2331",
       "launchCompleteCommand": "None",
-      "debugServerPath": "D:\\Program Files\\SEGGER\\JLink\\JlinkGDBServer.exe",
-      "debugServerArgs": "-select USB -device MIMXRT1062xxx6A -endian little -if SWD -speed auto -noir -LocalhostOnly",
+      "debugServerPath": "C:\\Program Files (x86)\\SEGGER\\JLink\\JLinkGDBServer.exe",
+      "debugServerArgs": "-select USB=261002821 -device MIMXRT1062xxx6A -endian little -if SWD -speed auto --noir -LocalhostOnly",
       "filterStderr": true,
       "filterStdout": true
     },
