@@ -62,7 +62,7 @@ getMcuExpressoPaths() {
     let LINE_NUMBER++
     sed -i ${LINE_NUMBER}"s/.*/`tail -1 ${TEMPORARY_FILE_NAME}`/" ../CMakeSettings.json
     #Double up the path separators for visual studio compatability
-    doubleUpWindowsPathSeparators ../CMakeSettings.json $LINE_NUMBER
+    convertFileToUnixPathSeparator ../CMakeSettings.json $LINE_NUMBER
   else
     echo "Could not find $GCC in ${1}/${PATH_TO_BIN}/${TOOLCHAIN_PREFIX}${GCC}"
     echo "Enter the full path to $GCC"
@@ -77,7 +77,7 @@ getMcuExpressoPaths() {
     let LINE_NUMBER++
     sed -i ${LINE_NUMBER}"s/.*/`tail -1 ${TEMPORARY_FILE_NAME}`/" ../CMakeSettings.json
     #Double up the path separators for visual studio compatability
-    doubleUpWindowsPathSeparators ../CMakeSettings.json $LINE_NUMBER
+    convertFileToUnixPathSeparator ../CMakeSettings.json $LINE_NUMBER
   fi
 
   ####Get the path to the C++ compiler
@@ -92,8 +92,8 @@ getMcuExpressoPaths() {
     LINE_NUMBER=`egrep -n -m1 "CMAKE_CXX_COMPILER" ../CMakeSettings.json | cut -f1 -d ":"`
     let LINE_NUMBER++
     sed -i ${LINE_NUMBER}"s/.*/`tail -1 ${TEMPORARY_FILE_NAME}`/" ../CMakeSettings.json
-    #Double up the path separators for visual studio compatability
-    doubleUpWindowsPathSeparators ../CMakeSettings.json $LINE_NUMBER
+    #For the compilers, vs likes unix path separators
+    convertFileToUnixPathSeparator ../CMakeSettings.json $LINE_NUMBER
   else
     echo "Could not find $GXX in ${1}/${PATH_TO_BIN}/${TOOLCHAIN_PREFIX}${GXX}"
     echo "Enter the full path to $GXX"
@@ -108,7 +108,7 @@ getMcuExpressoPaths() {
     let LINE_NUMBER++
     sed -i ${LINE_NUMBER}"s/.*/`tail -1 ${TEMPORARY_FILE_NAME}`/" ../CMakeSettings.json
     #Double up the path separators for visual studio compatability
-    doubleUpWindowsPathSeparators ../CMakeSettings.json $LINE_NUMBER
+    convertFileToUnixPathSeparator ../CMakeSettings.json $LINE_NUMBER
   fi
 
   ####Get the path to objcpy

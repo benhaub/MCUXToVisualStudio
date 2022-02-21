@@ -23,14 +23,14 @@ if [ $# -lt 2 ]; then
 fi
 
 DEBUG_CONFIG=`ls ${2} | egrep .*Debug.launch`
-#parseMcuExpressoDebugConfig "${2}/${DEBUG_CONFIG}"
-#if [ $? -ne 0 ]; then
-#  echo "Failed to parse debug configuration file"
-#  exit 1
-#else
-#  echo "Done reading debug configuration file"
-#fi
-#
+parseMcuExpressoDebugConfig "${2}/${DEBUG_CONFIG}"
+if [ $? -ne 0 ]; then
+  echo "Failed to parse debug configuration file"
+  exit 1
+else
+  echo "Done reading debug configuration file"
+fi
+
 parseMcuExpressoBuildOutput $3 $1
 if [ $? -ne 0 ]; then
   echo "Failed to parse build output"
@@ -38,21 +38,21 @@ if [ $? -ne 0 ]; then
 else
   echo "Done reading build output"
 fi
-#
-#getDebuggerPaths "${2}/$DEBUG_CONFIG"
-#if [ $? -ne 0 ]; then
-#  echo "Failed to get paths to debugging executables"
-#  exit 1
-#else
-#  echo "Done finding debug executables"
-#fi
-#
-#getMcuExpressoPaths "$1" "$2"
-#if [ $? -ne 0 ]; then
-#  echo "Failed to get paths to MCU Expresso files"
-#  exit 1
-#else
-#  echo "Done finding MCUXpresso files"
-#fi
+
+getDebuggerPaths "${2}/$DEBUG_CONFIG"
+if [ $? -ne 0 ]; then
+  echo "Failed to get paths to debugging executables"
+  exit 1
+else
+  echo "Done finding debug executables"
+fi
+
+getMcuExpressoPaths "$1" "$2"
+if [ $? -ne 0 ]; then
+  echo "Failed to get paths to MCU Expresso files"
+  exit 1
+else
+  echo "Done finding MCUXpresso files"
+fi
 
 echo "Conversion complete"

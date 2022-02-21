@@ -36,7 +36,7 @@ parseBuildOutput() {
     #See backslash characters, special expressions, and character classes.
     #It says find the option that is preceded by 1 or more spaces and is followed
     #by any non-whitespace character and and one or more spaces.
-    egrep -w ^$COMPILER $INPUT_FILE | egrep -o "\s+\\$1\S*\s+" | sort -u
+    egrep -w ^$COMPILER $INPUT_FILE | egrep -o "\s+\\$1\S*" | sort -u
     shift
   done
 }
@@ -57,7 +57,7 @@ parseMcuExpressoBuildOutput() {
   TEMPORARY_FILE_NAME=`createTemporaryFilename`
 
   ####Grab options for the C compiler
-  for OPTIONS in `parseBuildOutput "-std" "-m" "-f" "-s" "-specs" ${TOOLCHAIN_PREFIX}${GCC_} $1`; do
+  for OPTIONS in `parseBuildOutput "-m" "-f" "-s" "-n" "-O" ${TOOLCHAIN_PREFIX}${GCC_} $1`; do
     CFLAGS="${CFLAGS} ${OPTIONS}"
   done
   CFLAGS=`tr -d "\"" <<< "$CFLAGS"`
@@ -133,11 +133,12 @@ parseMcuExpressoBuildOutput() {
 
   #The rest of the libraries are in the LIBRARY_PATH variable
   FIELD=1
-  PATHS=" "
+  PATHS=`egrep LIBRARY_PATH $1 | sort -u | cut -d";" -f$FIELD`
   while [ "" != "$PATHS" ]; do
-    PATHS=`egrep LIBRARY_PATH $1 | sort -u | cut -d";" -f$FIELD` 
+    PATHS=`sed "s/LIBRARY_PATH\=//" <<< $PATHS`
     echo "SEARCH_DIR (\"$PATHS\")" >> $LINKER_SCRIPT_LIBRARY
     let FIELD++
+    PATHS=`egrep LIBRARY_PATH $1 | sort -u | cut -d";" -f$FIELD`
   done
 
   ####Find linker main linker script that includes the rest and update the paths

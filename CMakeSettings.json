@@ -1,8 +1,8 @@
 ﻿{
   "environments": [
     {
-      "cCompilerDefines": " -DCPU_MIMXRT1062DVL6A -D__NEWLIB__ -DNX_INCLUDE_USER_DEFINE_FILE -DSCANF_ADVANCED_ENABLE=0 -DSCANF_FLOAT_ENABLE=1 -DSDK_DEBUGCONSOLE=1 -DSDK_DEBUGCONSOLE_UART -DTX_INCLUDE_USER_DEFINE_FILE -D__USE_CMSIS -DXIP_BOOT_HEADER_ENABLE=1",
-      "cCompilerFlags": " -std=gnu99 -mcpu=cortex-m7 -mfloat-abi=soft -ffreestanding -ffunction-sections -fmerge-constants -fno-common -fstack-usage",
+      "cCompilerDefines": "-DCPU_MIMXRT1062DVL6A -DCPU_MIMXRT1062DVL6A_cm7 -DDEBUG -DFSL_FEATURE_PHYKSZ8081_USE_RMII50M_MODE -DFX_INCLUDE_USER_DEFINE_FILE -D__MCUXPRESSO -D__NEWLIB__ -DNX_INCLUDE_USER_DEFINE_FILE -DPRINTF_ADVANCED_ENABLE=1 -DPRINTF_FLOAT_ENABLE=1 -DSCANF_ADVANCED_ENABLE=0 -DSCANF_FLOAT_ENABLE=1 -DSDK_DEBUGCONSOLE=1 -DSDK_DEBUGCONSOLE_UART -DSERIAL_PORT_TYPE_UART=1 -DTX_INCLUDE_USER_DEFINE_FILE -D__USE_CMSIS -DXIP_BOOT_HEADER_ENABLE=1 -DXIP_EXTERNAL_FLASH=1",
+      "cCompilerFlags": "-mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -mthumb -fdata-sections -ffreestanding -ffunction-sections -fmacro-prefix-map=../board/=. -fmacro-prefix-map=../component/lists/=. -fmacro-prefix-map=../component/serial_manager/=. -fmacro-prefix-map=../component/uart/=. -fmacro-prefix-map=../device/=. -fmacro-prefix-map=../drivers/=. -fmacro-prefix-map=../ports/=. -fmacro-prefix-map=../source/=. -fmacro-prefix-map=../startup/=. -fmacro-prefix-map=../utilities/=. -fmacro-prefix-map=../xip/=. -fmerge-constants -fno-builtin -fno-common -fstack-usage -std=gnu99",
       "cxxCompilerDefines": "",
       "cxxCompilerFlags": ""
     }
@@ -21,17 +21,17 @@
       "variables": [
         {
           "name": "CMAKE_C_COMPILER",
-          "value": "C:/nxp/MCUXpressoIDE_11.3.1_5262/ide/tools/bin/arm-none-eabi-gcc.exe",
+          "value": "C:/nxp/MCUXpressoIDE_11.3.1_5262//ide/tools/bin/arm-none-eabi-gcc.exe",
           "type": "STRING"
         },
         {
           "name": "CMAKE_CXX_COMPILER",
-          "value": "C:/nxp/MCUXpressoIDE_11.3.1_5262/ide/tools/bin/arm-none-eabi-g++.exe",
+          "value": "C:/nxp/MCUXpressoIDE_11.3.1_5262//ide/tools/bin/arm-none-eabi-g++.exe",
           "type": "STRING"
         },
         {
           "name": "CMAKE_CXX_FLAGS",
-          "value": "${env.cxxCompilerFlags} ${env.cxxCompilerDefines}",
+          "value": "${env.cxxCompilerDefines} ${env.cxxCompilerFlags}",
           "type": "STRING"
         },
         {
@@ -61,7 +61,7 @@
         },
         {
           "name": "CMAKE_EXE_LINKER_FLAGS",
-          "value": "-Wl,-T${projectDir}\\evkmimxrt1060_azure_iot_mqtt_Debug.ld -Wl,-Map=${projectDir}\\Rt1060Startup.map",
+          "value": "-Wl,-T${projectDir}\\evkmimxrt1060_azure_iot_mqtt_Debug.ld,-Map=${projectDir}\\${name}.map,--gc-section,--sort-section=alignment,--cref,-print-memory-usage,-nostdlib",
           "type": "STRING"
         },
         {

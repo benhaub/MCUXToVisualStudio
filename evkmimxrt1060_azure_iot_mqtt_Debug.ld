@@ -9,8 +9,8 @@
  * MCUXpresso IDE v11.3.1 [Build 5262] [2021-04-02] on 28-Oct-2021 9:22:39 PM
  */
 
-INCLUDE "C:\Users\Ben\source\repos\Rt1060Startup\evkmimxrt1060_azure_iot_mqtt_Debug_library.ld"
-INCLUDE "C:\Users\Ben\source\repos\Rt1060Startup\evkmimxrt1060_azure_iot_mqtt_Debug_memory.ld"
+INCLUDE "D:\Repos\MCUXToVisualStudio\evkmimxrt1060_azure_iot_mqtt_Debug_library.ld"
+INCLUDE "D:\Repos\MCUXToVisualStudio\evkmimxrt1060_azure_iot_mqtt_Debug_memory.ld"
 
 ENTRY(ResetISR)
 

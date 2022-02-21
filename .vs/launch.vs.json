@@ -15,7 +15,7 @@
       "inheritEnvironments": [
         "gcc_arm"
       ],
-      "miDebuggerPath": "C:\\nxp\\MCUXpressoIDE_11.3.1_5262\\ide\\tools\\bin\\arm-none-eabi-gdb.exe",
+      "miDebuggerPath": "C:\\nxp\\MCUXpressoIDE_11.3.1_5262\\\\ide\\tools\\bin\\arm-none-eabi-gdb.exe",
       "setupCommands": [
         {
           "text": "-environment-cd ${workspaceRoot}\\Debug"

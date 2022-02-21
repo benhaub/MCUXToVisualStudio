@@ -23,10 +23,29 @@ convertToWindowsDriveLetter() {
   echo $1 | sed 's/\/mnt\/c\//C:\\/'
 }
 
-#Replace linux path separator with windows separators.
+#Replace unix path separator with windows separators.
 #$1 - String to replace path separators with.
 convertToWindowsPathSeparator() {
   echo "$1" | sed 's/\//\\/g'
+}
+
+#Replace windows path separators with unix.
+#$1 - String to replace path separators with
+convertStringToUnixPathSeparator() {
+  echo "$1" | sed 's/\\/\//g'
+}
+
+#Replace windows path separators in the file provided with unix path separators.
+#Optionally inlcude a line number as well. If not given, the entire file is at
+#the mercy of sed.
+#$1 - file to convert separators
+#$2 - Optional line number to restrict the conversion to.
+convertFileToUnixPathSeparator() {
+  if [ $# -eq 2 ]; then
+    sed -i $2's/\\/\//g' $1
+  else
+    sed -i 's/\\/\//g' $1
+  fi
 }
 
 #Double up path separators. Linux interprets them as escapes so they are
