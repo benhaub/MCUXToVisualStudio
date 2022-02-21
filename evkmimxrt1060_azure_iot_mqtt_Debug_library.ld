@@ -20,5 +20,6 @@ SEARCH_DIR ("c:/nxp/mcuxpressoide_11.3.1_5262/ide/plugins/com.nxp.mcuxpresso.too
 GROUP (
   "libgcc.a"
   "libc.a"
+  "libm.a"
   "libcr_newlib_nohost.a"
 )
