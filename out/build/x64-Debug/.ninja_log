@@ -1,8 +1,0 @@
-# ninja log v5
-1	30	0	CMakeFiles/clean.additional	c50502df8c13562b
-5	682	6659217964696319	CMakeFiles/Rt1060Startup.elf.dir/Rt1060Startup.c.obj	a30475072647fd0f
-31	38	0	clean	dbb53d30f9e84630
-15	1373	6659170185212533	CMakeFiles/Rt1060Startup.elf.dir/fsl_flexspi_nor_boot.c.obj	5039e5c03e95f2dd
-12	1731	6659170188862770	CMakeFiles/Rt1060Startup.elf.dir/Rt1060Startup.cpp.obj	20ac9f34f9286e44
-0	29	0	CMakeFiles/clean.additional	c50502df8c13562b
-29	37	0	clean	dbb53d30f9e84630

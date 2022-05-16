@@ -6,8 +6,13 @@
 
 int main()
 {
-    while (1);
+    int i = 0;
+    i = pow(1,1);
+    i = sqrt(4);
+    while (1) {
+        i = pow(1, 1);
+        i = sqrt(4);
+    }
+
     return 0;
-    pow(1,1);
-    sqrt(4);
 }

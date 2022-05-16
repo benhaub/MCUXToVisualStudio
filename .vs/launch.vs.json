@@ -15,7 +15,7 @@
       "inheritEnvironments": [
         "gcc_arm"
       ],
-      "miDebuggerPath": "C:\\nxp\\MCUXpressoIDE_11.3.1_5262\\\\ide\\tools\\bin\\arm-none-eabi-gdb.exe",
+      "miDebuggerPath": "C:\\nxp\\MCUXpressoIDE_11.3.1_5262\\ide\\tools\\bin\\arm-none-eabi-gdb.exe",
       "setupCommands": [
         {
           "text": "-environment-cd ${workspaceRoot}\\Debug"
@@ -36,15 +36,9 @@
       "miDebuggerServerAddress": "localhost:2331",
       "launchCompleteCommand": "None",
       "debugServerPath": "C:\\Program Files (x86)\\SEGGER\\JLink\\JLinkGDBServer.exe",
-      "debugServerArgs": "-select USB=261002821 -device MIMXRT1062xxx6A -endian little -if SWD -speed auto --noir -LocalhostOnly",
+      "debugServerArgs": "-select USB=261002821 -device MIMXRT1062xxx6A -endian little -if SWD -speed auto -noir -LocalhostOnly",
       "filterStderr": true,
       "filterStdout": true
-    },
-    {
-      "type": "default",
-      "project": "CMakeLists.txt",
-      "projectTarget": "Rt1060Startup.elf",
-      "name": "Rt1060Startup.elf"
     }
   ]
 }

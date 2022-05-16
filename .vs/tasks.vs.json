@@ -1,8 +1,8 @@
 {
   "version": "0.2.1",
   "pathToJLink": "\"C:\\Program Files (x86)\\SEGGER\\JLink\\JLink.exe\"",
-  "JLinkArgs": "-if SWD -speed auto -commanderScript Debug\\script.jlink -device MIMXRT1062xxx6A -SelectEmuBySN 261002821",
-  "objCpy": "C:\\nxp\\MCUXpressoIDE_11.3.1_5262\\\\ide\\tools\\bin\\arm-none-eabi-objcopy.exe",
+  "JLinkArgs": "-if SWD -speed auto -commanderScript script.jlink -device MIMXRT1062xxx6A -SelectEmuBySN 261002821",
+  "objCpy": "C:\\nxp\\MCUXpressoIDE_11.3.1_5262\\ide\\tools\\bin\\arm-none-eabi-objcopy.exe",
   "tasks": [
     {
       "taskLabel": "objcopy-Rt1060Startup",

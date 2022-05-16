@@ -30,7 +30,6 @@ parseMcuExpressoDebugConfig() {
   SN=`egrep "segger.select" "$1" | cut -f4 -d "=" | tr -d "\"" | tr -d "/" | tr -d ">" | tr -d "\r"`
   ENDIAN=`egrep "segger.endian" "$1" | cut -f3 -d "=" | tr -d "\"" | tr -d "/" | tr -d ">" | tr -d "\r"`
   INIT_REGISTER=`egrep "segger.init.register" "$1" | cut -f3 -d "=" | tr -d "\"" | tr -d "/" | tr -d ">" | tr -d "\r"`
-  INIT_REGISTER="-$INIT_REGISTER"
   IP_ADDRESS=`egrep "core.ipAddress" "$1" | cut -f3 -d "=" | tr -d "\"" | tr -d "/" | tr -d ">" | tr -d "\r"`
   PORT_NUMBER=`egrep "core.portNumber" "$1" | cut -f3 -d "=" | tr -d "\"" | tr -d "/" | tr -d ">" | tr -d "\r"`
   if [ "$IP_ADDRESS" = "localhost" ]; then
@@ -41,7 +40,7 @@ parseMcuExpressoDebugConfig() {
 
 
   ####Build the command line arg string
-  echo "  \"JLinkArgs\": \"-if $IF -speed $SPEED -commanderScript Debug\\script.jlink -device $DEVICE -SelectEmuBySN $SN\"," >> $TEMPORARY_FILE_NAME
+  echo "  \"JLinkArgs\": \"-if $IF -speed $SPEED -commanderScript script.jlink -device $DEVICE -SelectEmuBySN $SN\"," >> $TEMPORARY_FILE_NAME
   doubleUpWindowsPathSeparators $TEMPORARY_FILE_NAME
   #Insert it into tasks.vs.json
   LINE_NUMBER=`egrep -n -m1 "JLinkArgs" tasks.vs.json | cut -f1 -d ":"`

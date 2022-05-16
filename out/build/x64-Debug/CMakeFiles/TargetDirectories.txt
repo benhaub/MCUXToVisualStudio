@@ -1,3 +1,0 @@
-C:/Users/Ben/source/repos/Rt1060Startup/out/build/x64-Debug/CMakeFiles/Rt1060Startup.elf.dir
-C:/Users/Ben/source/repos/Rt1060Startup/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-C:/Users/Ben/source/repos/Rt1060Startup/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
