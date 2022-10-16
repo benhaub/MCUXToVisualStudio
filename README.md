@@ -8,6 +8,12 @@ In MCU expresso, enable verbose output for both the C and C++ compilers and enab
 build a release or debug version of the project
 If there is no debug launch file, then export one to the MCUXpresso project root directory
 
+In Visual Studio, copy the .vs files to the .vs folder.
+Remove any automatically added source files and output folders.
+Replace CMakeSettings.json and CMakeLists.txt with the one from this Repository.
+Open a developer PowerShell and enter the command bash
+Go into the .vs directory and enter ./convertMcuXToVisualStudio with all the required arguments. Enter with no arguments to get help.
+
 Troubleshooting
 
 - If an inlcude file can't be found, add additional target_include_directories commands to the CMakeLists.txt file for those source files.
