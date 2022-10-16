@@ -1,0 +1,59 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "projectName": "",
+  "configurations": [
+    {
+      "type": "cppdbg",
+      "name": "",
+      "project": "Debug\\${projectName}.elf",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}\\Debug\\${projectName}.elf",
+      "targetArchitecture": "arm",
+      "MIMode": "gdb",
+      "inheritEnvironments": [
+        "gcc_arm"
+      ],
+      "miDebuggerPath": "",
+      "setupCommands": [
+        {
+          "text": "-environment-cd ${workspaceRoot}\\Debug",
+          "ignoreFailures": false
+        },
+        {
+          "text": "-file-exec-and-symbols ${projectName}.elf",
+          "ignoreFailures": false
+        },
+        {
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": false
+        },
+        {
+          "text": "-break-insert main",
+          "ignoreFailures": false
+        }
+      ],
+      "customLaunchSetupCommands": [
+        {
+          "text": "target remote localhost:",
+          "ignoreFailures": false
+        },
+        {
+          "text": "monitor reset",
+          "ignoreFailures": false
+        },
+        {
+          "text": "monitor halt",
+          "ignoreFailures": false
+        }
+      ],
+      "showDisplayString": false,
+      "miDebuggerServerAddress": "",
+      "launchCompleteCommand": "None",
+      "debugServerPath": "",
+      "debugServerArgs": "",
+      "filterStderr": true,
+      "filterStdout": true
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+﻿{
+  "environments": [
+    {
+      "cCompilerDefines": "",
+      "cCompilerFlags": "",
+      "cCompilerDebugFlags": "",
+      "linkerFlags": "",
+      "cxxCompilerDefines": "",
+      "cxxCompilerFlags": "",
+      "cxxCompilerDebugFlags": ""
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Debug",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "buildRoot": "${projectDir}\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "gcc_arm" ],
+      "variables": [
+        {
+          "name": "CMAKE_C_COMPILER",
+          "value": "",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_COMPILER",
+          "value": "",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_FLAGS",
+          "value": "${env.cxxCompilerDefines} ${env.cxxCompilerFlags}",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_STANDARD",
+          "value": "",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_SYSTEM_NAME",
+          "value": "Generic",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_SYSTEM_PROCESSOR",
+          "value": "arm",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_C_FLAGS_DEBUG",
+          "value": "${env.cCompilerDebugFlags}",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_FLAGS_DEBUG",
+          "value": "${env.cxxCompilerDebugFlags}",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_EXE_LINKER_FLAGS",
+          "value": "-Wl,-T${projectDir}\\${name}\\link.ld,-Map=${projectDir}\\${name}.map ${env.linkerFlags}",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_C_FLAGS",
+          "value": "${env.cCompilerFlags} ${env.cCompilerDefines}",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_C_STANDARD",
+          "value": "",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_ASM_FLAGS",
+          "value": "",
+          "type": "STRING"
+        }
+      ],
+      "intelliSenseMode": "linux-gcc-arm"
+    },
+    {
+      "name": "Release",
+      "generator": "Ninja",
+      "configurationType": "Release",
+      "buildRoot": "${projectDir}\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "gcc_arm" ],
+      "variables": [
+               {
+          "name": "CMAKE_C_COMPILER",
+          "value": "",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_COMPILER",
+          "value": "",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_FLAGS",
+          "value": "${env.cxxCompilerDefines} ${env.cxxCompilerFlags}",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_STANDARD",
+          "value": "",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_SYSTEM_NAME",
+          "value": "Generic",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_SYSTEM_PROCESSOR",
+          "value": "arm",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_CXX_FLAGS_DEBUG",
+          "value": "${env.cxxCompilerDebugFlags}",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_EXE_LINKER_FLAGS",
+          "value": "-Wl,-T${projectDir}\\${name}\\link.ld,-Map=${projectDir}\\${name}.map ${env.linkerFlags}",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_C_FLAGS",
+          "value": "${env.cCompilerFlags} ${env.cCompilerDefines}",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_C_STANDARD",
+          "value": "",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_ASM_FLAGS",
+          "value": "",
+          "type": "STRING"
+        }
+      ],
+      "intelliSenseMode": "linux-gcc-arm"
+    }
+  ]
+}

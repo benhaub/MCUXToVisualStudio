@@ -1,0 +1,29 @@
+{
+  "version": "0.2.1",
+  "pathToJLink": "",
+  "projectName": "",
+  "JLinkArgs": "",
+  "objCpy": "",
+  "tasks": [
+    {
+      "taskLabel": "objcopy-${projectName}",
+      "appliesTo": "Debug/${projectName}.elf",
+      "type": "launch",
+      "contextType": "build",
+      "command": "${objCpy}",
+      "args": [
+        "-O binary Debug\\${projectName}.elf Debug\\${projectName}.bin"
+      ]
+    },
+    {
+      "taskLabel": "flash-${projectName}",
+      "appliesTo": "Debug/${projectName}.bin",
+      "type": "default",
+      "contextType": "custom",
+      "command": "${env.COMSPEC}",
+      "args": [
+        "${pathToJLink} ${JLinkArgs}"
+      ]
+    }
+  ]
+}
