@@ -1,5 +1,0 @@
-ExitOnError 1
-r
-h
-loadfile "Debug\Rt1060Startup.bin" 0x60000000
-qc
