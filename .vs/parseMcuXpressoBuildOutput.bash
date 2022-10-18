@@ -196,7 +196,6 @@ parseMcuXpressoBuildOutput() {
     OPTIONS=`echo $OPTIONS | tr -d "\""`
     LDFLAGS="${LDFLAGS} ${OPTIONS}"
   done
-
   #Insert the string of linker options into ../CMakeSettings.json
   LINE_NUMBER=`egrep -n -m1 "\"linkerFlags\":" ../CMakeSettings.json | cut -f1 -d ":"`
   sed -i ${LINE_NUMBER}"s/.*/      \"linkerFlags\": \"${LDFLAGS}\",/" ../CMakeSettings.json
@@ -206,18 +205,24 @@ parseMcuXpressoBuildOutput() {
   for DEFINE in `parseBuildOutput "-D" ${GCC_} $1`; do
     CCOMPILER_DEFINES="${CCOMPILER_DEFINES} $DEFINE"
   done
-  CCOMPILER_DEFINES="      \"cCompilerDefines\": \"$CCOMPILER_DEFINES\","
-
+  CCOMPILER_DEFINES=`tr -d "\"" <<< "$CCOMPILER_DEFINES"`
+  CCOMPILER_DEFINES=`convertToWindowsPathSeparator "$CCOMPILER_DEFINES"`
+  echo "      \"cCompilerDefines\": \"$CCOMPILER_DEFINES\"," > $TEMPORARY_FILE_NAME
   #Insert the string of defines into ../CMakeSettings.json
   LINE_NUMBER=`egrep -n -m1 "cCompilerDefines" ../CMakeSettings.json | cut -f1 -d ":"`
-  sed -i ${LINE_NUMBER}"s/.*/${CCOMPILER_DEFINES}/" ../CMakeSettings.json
+  doubleUpWindowsPathSeparators $TEMPORARY_FILE_NAME
+  #Convert to windows path separators and escape them so we don't mess with seds own /
+  sed -i ${LINE_NUMBER}"s/.*/`tail -1 ${TEMPORARY_FILE_NAME}`/" ../CMakeSettings.json
+  #Convert all the windows path separators back to linux. GCC wants them that way.
+  sed -i ${LINE_NUMBER}"s/.*/`tail -1 ${TEMPORARY_FILE_NAME}`/" ../CMakeSettings.json
+  #Convert all the windows path separators back to linux. GCC wants them that way.
+  sed -i ${LINE_NUMBER}'s/\\/\//g' ../CMakeSettings.json
 
   ####Grab all the C++ compiler defines
   for DEFINE in `parseBuildOutput "-D" ${GXX_} $1`; do
     CXXCOMPILER_DEFINES="${CXXCOMPILER_DEFINES} $DEFINE"
   done
   CXXCOMPILER_DEFINES="      \"cxxCompilerDefines\": \"$CXXCOMPILER_DEFINES\","
-
   #Insert the string of defines into ../CMakeSettings.json
   LINE_NUMBER=`egrep -n -m1 "cxxCompilerDefines" ../CMakeSettings.json | cut -f1 -d ":"`
   sed -i ${LINE_NUMBER}"s/.*/${CXXCOMPILER_DEFINES}/" ../CMakeSettings.json

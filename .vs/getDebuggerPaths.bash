@@ -29,7 +29,7 @@ getDebuggerPaths() {
   TEMPORARY_FILE_NAME=`createTemporaryFilename`
   if [ $? -ne 0 ]; then
     echo "Could not create temporary file"
-    exit 1
+    return 1
   fi
 
   ####If probe type is JLINK. Look for SEGGER executables.
@@ -39,20 +39,20 @@ getDebuggerPaths() {
   fi
 
   if [ $? -eq 0 ]; then
-    SEGGER_PATH=`find /mnt/c/Program\ Files* -iname segger -type d 2>/dev/null`
-    echo "1st $SEGGER_PATH"
-    if [[ ! -d "${SEGGER_PATH}" ]]; then
-      echo "Could not find SEGGER executables."
-      echo "Please provide the path to SEGGER:"
-      read
-      while [[ ! -d "${REPLY}/SEGGER" ]]; do
-        echo "Searching for ${REPLY}/SEGGER"
-        echo "Could not find SEGGER folder. Enter the path to SEGGER"
-        read
-      done
-      SEGGER_PATH=$REPLY
-    fi
+    for SEGGER_PATH in `find /mnt/c/Program\ Files* -iname segger -type d 2>/dev/null`; do
+      if [[ ! -d "${SEGGER_PATH}" ]]; then
+        SEGGER_PATH=""
+        continue
+      else
+        break
+      fi
+    done
   fi
+
+    if [ "$SEGGER_PATH" = "" ]; then
+      echo "Could not find segger executables"
+      return 1
+    fi
 
   DEBUG_SERVER_PATH=${SEGGER_PATH}/JLink/JLinkGDBServer.exe
   DEBUG_SERVER_PATH=`convertToWindowsDriveLetter "${DEBUG_SERVER_PATH}"`

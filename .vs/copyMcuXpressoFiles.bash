@@ -60,7 +60,7 @@ copyMcuXpressoFiles() {
   local IFS=$'\n'
   CWD=$(pwd)
   #Grab a list of all excludes
-  for ENTRY in `egrep "<entry excluding.*>" /mnt/d/Repos/BIC/BicEcu/.cproject`; do
+  for ENTRY in `egrep "<entry excluding.*>" $1/.cproject`; do
     #Grab the root directory containing the excluded items
     ROOT_EXCLUDE_DIR=`egrep -o 'name="[^"]*"' <<< "$ENTRY" | cut -d"=" -f2 | tr -d "\""`
     EXCLUDED_ITEMS=`egrep -o 'excluding="[^"]*"' <<< "$ENTRY" | cut -d"=" -f2 | tr -d "\""`
@@ -95,11 +95,13 @@ copyMcuXpressoFiles() {
        #excluded directories in this list.
        for EXCLUDE in $EXCLUDE_PATH; do
          #All directoires were copied before, now remove the excluded ones.
+         #Commented out because some source files can use excluded headers.
+         #instead of deleting, just don't add an add_subdirectory'
          #rm -rf ../$EXCLUDE
          #Populate the ALL_DIRS variable with all directories execept for
          #excluded ones. That way when add_subdirectory commands are added,
          #we won't add subdirectories for excluded items.
-         egrep $EXCLUDE <<< $SUBDIRS
+         egrep --silent $EXCLUDE <<< $SUBDIRS
          if [ $? -eq 0 ]; then
            IS_EXCLUDED=0
            break

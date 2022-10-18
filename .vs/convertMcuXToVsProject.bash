@@ -89,6 +89,5 @@ if [ $? -ne 0 ]; then
   exit 1
 else
   echo "Done finding MCUXpresso files"
-fi
 
 echo "Conversion complete"
