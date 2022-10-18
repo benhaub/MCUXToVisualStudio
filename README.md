@@ -1,10 +1,12 @@
+Convert an MCUXpresso project to a Visual Studio CMake project.
+
 Need the Linux and embedded development with C++ workload
 Only works with J-link debuggers
 
 Create a new CMake C++ IoT project for all platforms in visual studio
 project name and project root directory must match
 
-In MCU expresso, enable verbose output for both the C and C++ compilers and enable build logging.
+In MCUXpresso, enable verbose output for both the C and C++ compilers and enable build logging.
 build a release or debug version of the project
 If there is no debug launch file, then export one to the MCUXpresso project root directory
 
