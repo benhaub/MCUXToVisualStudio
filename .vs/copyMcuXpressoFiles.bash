@@ -28,12 +28,12 @@ createCmakeListsForSubdir() {
   mkdir -p $SUBDIR
 
   ####Start building the contents of CMakeLists for this sub-directory
-  ls $SUBDIR | egrep '(*.\.c$|*.\.cpp$|*.\.s$|*.\.S$|*.\.h$|*.\.hpp$)'
+  ls $SUBDIR | egrep '(.*\.c$|.*\.cpp$|.*\.s$|.*\.S$|.*\.h$|.*\.hpp$)'
   #If there are source files, add the target_sources command.
   if [ $? -eq 0 ]; then
     echo "target_sources(${PROJECT_NAME}.elf" > $SUBDIR/CMakeLists.txt
     echo "PRIVATE" >> $SUBDIR/CMakeLists.txt
-    for SOURCES in `ls $SUBDIR | egrep '(*.\.c$|*.\.cpp$|*.\.s$|*.\.S$|*.\.h$|*.\.hpp$)'`; do
+    for SOURCES in `ls $SUBDIR | egrep '(.*\.c$|.*\.cpp$|.*\.s$|.*\.S$|.*\.h$|.*\.hpp$)'`; do
       printf "    %s\n" $SOURCES >> $SUBDIR/CMakeLists.txt
     done
     echo ")" >> $SUBDIR/CMakeLists.txt
@@ -79,7 +79,7 @@ copyMcuXpressoFiles() {
     if [ $? -eq 0 ]; then
        cp -r $1/$DIRS/*.ld ../$DIRS
    fi
-   ls -1R $1/$DIRS | egrep --silent '(*.\.c$|*.\.cpp$|*.\.s$|*.\.S$|*.\.h$|*.\.hpp$)'
+   ls -1R $1/$DIRS | egrep --silent '(.*\.c$|.*\.cpp$|.*\.s$|.*\.S$|.*\.h$|.*\.hpp$)'
    if [ $? -ne 0 ]; then
      continue
    else
